@@ -1,0 +1,52 @@
+****************************************************
+* Build Instructions for the LTpowerAnalyzer
+*
+* History:
+* 06-24-2023 - Initial Version by RLR
+*
+****************************************************
+
+** Open Visual Studio **
+Currently using  Visual Studio 2022 free version.
+
+** Open the LTpowerAnalyzerDriver solution **
+Update the version information by going to Project -> LTpowerAnalyzer Properties -> Assembly Information
+Choose Release build for Any CPU and then build the project. The convention for this project is to always have the driver and gui using the same version numbers even if one of the projects has no changes.
+
+** Open the LTpowerAnalyzerGUI solution **
+Update the version information by going to Project -> LTpowerAnalyzer Properties -> Assembly Information
+Choose Release build for Any CPU and then build the project.
+
+** Update the Help file **
+Navigate to the /Help/HelpNDoc directory and open the LTpowerAnalyzer file using the HelpNDoc application which can be found at : https://www.helpndoc.com/ Currently the professional version is being used, but the free version should also work. Make the necessary changes to the help file then compile. The LTpowerAnalyzer help file will be written to the Setup/CurrentSetup folder.
+
+
+** Update the Version History file **
+In the Setup/CurrentSetup folder, update the LTpowerAnalyzerVersionHistory.txt file. This file contains the details of the revision.
+
+** Update the Latest Version file**
+In the Setup/CurrentSetup folder, update the LatestVersion.txt file with the version information,
+date, and description. This file is read from the server by the StartProcess and StopProcess applications when running the check for updates feature from the LTpowerPowerAnalyzer gui. If the
+user has the latest version, no update will be performed. The code for the StartProcess and StopProcess applications can be found /Library/RLInstaller directory.
+
+** Save the current install files **
+Make a new folder in the Setup/PreviousSetups directory using the current setup version name. Move the Setup/CurrentSetup install files to the new folder. 
+
+** Generate the install executable files **
+Open the Setup/CurrentSetup/LTpowerAnalyzer.inno setup file with the InnoSetup.exe application. The application can be downloaded from : https://jrsoftware.org/isinfo.php. Two setup files must be generated : SetupLTpowerAnalyzer.exe for first time setups, and UpdateLTpowerAnalyzer.exe which will be run using the check for updates feature within the LTpowerAnalyzer gui. Before running the setup compiler, change the version number at the top. Uncomment the define setup line at the top then compile the SetupLTpowerAnalyzer.exe file then comment the #define setup line to compile the UpdateLTpowerAnalyzer.exe file. Add the version information to the generated file names. Example : SetupLTpowerAnalyzer_1_7_1_0.exe and UpdateLTpowerAnalyzer_1_7_1_0.exe
+
+** Sign the Install Files **
+When connected to the ADI network, use a web browswer to sign into the Jenkins server at:
+https://www.secad.analog.com/jenkins/dte/job/Packaging/job/CodeSigning/job/CSCodeSign/build?delay=0sec
+Run both the SetupLTpowerAnalyzer_x_x_x_x.exe and UpdateLTpowerAnalyzer_x_x_x_x.exe files. When finished
+add the _Signed to the end of the signed files name.
+
+** Update the Files to the server **
+User an ftp program to update 3 files to the server which is found at:
+
+FTP site: lttools.upload.akamai.com
+Username: R2eayLTPA
+Password: LTP0@z3r
+Support : Robin M. Graff, Analog Devices, Inc., 781-461-3369
+
+Save the current version files into the previous version folder, then upload the SetupLTpowerAnalyzer_x_x_x_x_Signed.exe and UpdateLTpowerAnalyzer_x_x_x_x_Signed.exe files to the server, then remove the version info from the name so they are simply SetupLTpowerAnalyzer.exe and UpdateLTpowerAnalyzer.exe. Finish by uploading the LatestVersion.txt file.
