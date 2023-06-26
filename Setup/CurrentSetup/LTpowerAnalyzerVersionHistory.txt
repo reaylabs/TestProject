@@ -1,0 +1,160 @@
+
+Version 1.7.1.0
+Date: 12-09-2022
+Description:
+1. Fixed small bug in the transient current interface.
+
+Version 1.6.10.3
+Date: 09-13-2022
+Description:
+1. The transient rise/fall time and repeat controls are not longer disabled when the selected minimum probe current is less than the minimum resolution.
+2. The minimum resolvable transient current value will be calculated and added to the Low Current list box when the High Current value is changed.
+3. The transient list boxes will now automatically update if the text has changed and the control loses focus.
+
+
+Version 1.7.0
+Date: 12-02-2022
+Description:
+1. Remove support for the Analog Discovery 2 in order to focus on the M2K.
+
+Version 1.6.10.3
+Date: 09-13-2022
+Description:
+1. The transient rise/fall time and repeat controls are not longer disabled when the selected minimum probe current is less than the minimum resolution.
+2. The minimum resolvable transient current value will be calculated and added to the Low Current list box when the High Current value is changed.
+3. The transient list boxes will now automatically update if the text has changed and the control loses focus.
+
+Version 1.6.10.2
+Date: 08-22-2022
+Description:
+1. Changed the graph and graph control in the SweepAmplitude tab to look like the other tabs. Right click on the data window on the left now brings
+   up a menu which allows data functions to be performed like the Piece Wise Linear data window in the Transient tab.
+2. Data entry text boxes now hight the selected text when the box is clicked.
+
+Version 1.6.10.1
+Date: 08-11-2022
+Description:
+1. Added the Piece Wise Linear (PWL) capability to the transient waveform generator.
+2. Fixed bug that reset the transient voltage scaling when in manual mode and the mouse touches the RUN button.
+3. Modified the transient min/max measurement of the transient voltage data to only search through values visible on the graph.
+
+Version 1.6.9.x
+Date: 03-18-2021
+Description:
+1. Add the Check For Updates functionality to the Help menu.
+2. Fixed bug where the scope time axis was displayed incorrectly when loading a previous file.
+3. Allow the About Screen to be placed behind the main window.
+4. Add the word External to the DC Load text box in the transient to make it clear that the value is for an external load.
+5. Make the 0 horizontal scale for the Bode Gain And Phase and Impedance and Phase line up when in autoscale mode.
+6. Make the Vout min and max lines in the transient be the same color of Vout sweep that is selected.
+7. Modify the DC maximum power to the impedance measurement in the scope and impedance form. Maximum DC current probe DC power is limited to 12W.
+8. Fix the LTsupplyAnalyzer typo in the Help file.
+9. Register the .bod files in the Windows registry so the program can be launched by clicking on the .bod file icon.
+10. Add the .bos setup file type that only contains the measurement setup and not the data.
+11. Fixed bug that would sometimes show the bode plot cursors when a file was loaded that didn't have the cursors enabled.
+12. Autoscale the Bode Plot and Impedance Plot during a measurement
+13. Add the autolevel check box to the transient plot that allows the trigger level to be automatically calculated when checked and manually set when unchecked.
+14. Shorten the time it takes to load a .bod file from disk.
+15. Changing the designed switching frequency and tolerance in any of the measurements automatically updates the other measurements.
+16. Add the Version History window to the Help menu.
+17. Fixed a bug that prevented the transient or impedance current from returning to 0 when using firmware version 0.26 or greater for the M2k.
+18. Fixed a bug that sometimes crashed the program when aborting a bode plot in the slow mode and the frequency was low.
+19. Fixed a bug that sometimes prevented the bode plot from triggering properly using the Analog Discovery 2.
+
+Version 1.6.8.0
+Date: 02-25-2021
+Description:
+1. Set the graphs for all measurements to default to autoscale mode. This allows the user to immediately take a measurement and view the results
+   without adjusting the graph settings.
+2. Changed the autoscale algorithm for the bode and impedance measurements to always show 0, and keep the axis labels to multiple of 5 or 10.
+3. Changed the autoscale algorithm for scope and the transient measurement to always keep the data in the best vertical position for viewing.
+4. The current trigger for the transient measurement is automatically set when the current levels are changed.
+5. Fixed a bug in the bode plot aliased frequency detection algorithm that sometimes created a non-monotonic frequency value.
+6. Fixed a bug in the scope that would cause the program to crash when the scope was stopped when waiting for a trigger.
+7. Fixed a bug in the scope that would cause the program to crash when the scope time base range was changed when running.
+7. Modify the switching frequency search algorithm to only search within the user selected tolerance around the design frequency value.
+   If the switching frequency is not found, the aliased frequency avoidance algorithm is turned off. The wide-band frequency search was 
+   eliminated because it was sometimes locking in on strong harmonics instead of the fundamental switching frequency. The algorithm now
+   will now report 0 Hz on LDO's or switching supplies that have been turned off.
+7. Add a more detailed explanation of the calibration procedure to the help file.
+8. Update the help file with the new screen shots.
+9. Add a section about the interface to LTpowerCAD in the help file.
+
+Version 1.6.7.0
+Date: 02-04-2021
+Description:
+1. Add the ability to handle multi-culture Windows settings without crashing.
+
+Version 1.6.6.0
+Date: 01-26-2021
+Description:
+1. Add the Scale Factor input for the transient Vout data. Simply multiplies the Vout+-Vout- measured voltage by the Scale Factor.
+   Allows for a resistor divider placed at the Vout+ and Vout- inputs to extend range or account for gain errors.
+2. Add the DC Load Current input to the transient load current to account for a parallel DC Electronic Load.
+   Simply added the DC Load Current value to the measured load current values.
+3. Automatically save the current setup when closing the program.
+4. Add the ability to load the last setup from the FILE menu.
+
+Version 1.6.5.0
+Date: 01-17-2021
+Description:
+1. The switching frequency finder searches for a frequency close to the designed switching frequency. Previously, if it was not
+   found, the value would be set to unknown. Now, if not found, a general search will be run, and the switching frequency will be
+   set to the FFT frequency with the greatest magnitude.
+
+Version 1.6.4.0
+Date: 12-16-2020
+Description:
+1. Speed up the connection sense routine.
+2. Speed up the scope display time.
+
+Version 1.6.3.0
+Date: 12-06-2020
+Description:
+1. Fixed bug where checking the autoscale box before data is acquired in the scope form would cause a crash.
+2. Fixed bug where scope form cursors would show the wrong values in impedance mode.
+3. Fixed bug that prevented the normal trigger from working in impedance mode on the scope form.
+4. Fixed bug in AD2 impedance mode on the scope form that stopped the scope after a temperature measurement.
+5. Fixed bug where the cursors could show values in atto seconds instead of zero due to rounding error.
+6. Added a minimum current level in the current waveform for impedance measurements to overcome the offset of the amplifiers.
+
+Version 1.6.2.0
+Date: 12-03-2020
+Description:
+1. Fixed bug that prevented the AD2 from being discovered.
+2. Modified the M2K sampling algorithm to prevent intermittent crashes.
+3. Modified the fixed gain of the current source Vout measurement to make it more accurate.
+
+Version 1.6.1.0
+Date: 11-27-2020
+Description:
+1. Added the Getting Started section to the help file.
+2. Added the LTpowerAnalyzerUserGuide.pdf to the install directory.
+3. Fixed bug where the transient and impedance RUN buttons could be enabled when the current probe was not connected.
+
+Version 1.6.0.6
+Date: 11-15-2020
+Description:
+1. Simplified the calibration routine.
+2. The calibration data is now stored in C:\Users\(User Name)\AppData\Local\LTpowerAnalyzer\LTpowerAnalyzerCalibration.xml instead of the install directory.
+3. Now only the LB3031A needs to be connected to run a calibration.
+
+Version 1.6.0.5
+Date: 11-01-2020
+Description:
+1. Fixed bug where the analysis form data was scrambled when deleting bode plot waveforms.
+2. The data tab sweep numbers are now reordered when a data set is deleted.
+3. Added an _ to the automatic sweep numbering on the transient form.
+
+Version 1.6.0.4
+Date: 10-25-2020
+Description:
+1. Added support for the M2K
+2. Added the calibration routine required for M2K
+3. Modified the output impedance phase calculation by 180 deg so that the data matches LTpowerCAD
+4. Added the ability to copy and paste the impedance tabular data
+5. Added the designed switching frequency input to improve the switching frequency measurement accuracy.
+Required Hardware:
+1. ADALM2000 (M2K) or Analog Discovery 2 USB scope
+2. LB3031A Rev 3 LTpowerAnalyzer main board
+2. LB3058A Rev 3 LTpowerAnalyzer current probe. Options: -A (1A), -B(10A), -C (50A), -D(100)
