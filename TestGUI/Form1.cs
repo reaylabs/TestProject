@@ -11,8 +11,9 @@ namespace TestGUI
 
         private void button1_Click(object sender, EventArgs e)
         {
-            count++;
+            
             tbCount.Text = count.ToString();
+            count++;
         }
     }
 }
